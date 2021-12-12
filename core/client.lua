@@ -53,10 +53,10 @@ Citizen.CreateThread(function()
         location = GetLocationPoint()
         local v = Aluxer['about']['zone'][tonumber(location)]
         if v ~= nil and GetDistanceBetweenCoords(playerCoords, v.coords.x, v.coords.y, v.coords.z, true) < v.dist then
-		if #npc_entity < v.max then
-			SpawnNpcBoost()
-		end
-		Citizen.Wait(v.respawn)
+	   if #npc_entity < v.max then
+	      SpawnNpcBoost()
+	   end
+	   Citizen.Wait(v.respawn)
         else
             Citizen.Wait(500)
         end
@@ -64,53 +64,53 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		local w = true
-		if not delnpc then
-			for k, v in pairs(npc_entity) do
-				if DoesEntityExist(v.entity) then
-					local coords_ped = GetEntityCoords(v.entity)
-					local playerCoords = GetEntityCoords(PlayerPedId())
-					local health_ped = GetEntityHealth(v.entity)
-					local dist = GetDistanceBetweenCoords(playerCoords,coords_ped, true)
-					if health_ped <= 0 then
-						w = false
-						SetEntityAsNoLongerNeeded(v.entity)
-						DeleteEntity(v.entity)
-						npc_entity[k] = nil
-						num = num - 1
-					end
-					if dist > 100 then
-						DeleteNpc()
-					end
-				end
-			end
+   while true do
+	Citizen.Wait(0)
+	local w = true
+	if not delnpc then
+	   for k, v in pairs(npc_entity) do
+	      if DoesEntityExist(v.entity) then
+		local coords_ped = GetEntityCoords(v.entity)
+		local playerCoords = GetEntityCoords(PlayerPedId())
+		local health_ped = GetEntityHealth(v.entity)
+		local dist = GetDistanceBetweenCoords(playerCoords,coords_ped, true)
+		if health_ped <= 0 then
+		   w = false
+		   SetEntityAsNoLongerNeeded(v.entity)
+		   DeleteEntity(v.entity)
+		   npc_entity[k] = nil
+		   num = num - 1
 		end
-		if w then
-			Citizen.Wait(500)
+		if dist > 100 then
+		   DeleteNpc()
 		end
+	     end
+	   end
 	end
+	if w then
+	   Citizen.Wait(500)
+	end
+   end
 end)
 
 function DeleteNpc()
-	if delnpc then return end
-	delnpc = true
-	for k,v in pairs(npc_entity) do
-		SetEntityAsNoLongerNeeded(v.entity)
-		DeleteEntity(v.entity)
-		npc_entity[k] = nil
-		num = num - 1
-	end
-	delnpc = false
-	print('[ALUXER] NPC BOOST : DELETE')
+   if delnpc then return end
+   delnpc = true
+   for k,v in pairs(npc_entity) do
+      SetEntityAsNoLongerNeeded(v.entity)
+      DeleteEntity(v.entity)
+      npc_entity[k] = nil
+      num = num - 1
+   end
+   delnpc = false
+   print('[ALUXER] NPC BOOST : DELETE')
 end
 
 AddEventHandler('onResourceStop', function(resource)
-	if resource == GetCurrentResourceName() then
-		for k,v in pairs(npc_entity) do
-			SetEntityAsNoLongerNeeded(v.entity)
-			DeleteEntity(v.entity)
-		end
-	end
+   if resource == GetCurrentResourceName() then
+      for k,v in pairs(npc_entity) do
+         SetEntityAsNoLongerNeeded(v.entity)
+         DeleteEntity(v.entity)
+      end
+   end
 end)

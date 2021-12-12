@@ -6,8 +6,8 @@
 > - free to setting
 > - Optimize CPU 0.01 ms when you near coord
   
-####### Resource Name : ALUXER NPC TRAINING
-####### Developer : ALUXER#9951 (Discord)
-####### Script for FiveM Server  
+###### Resource Name : ALUXER NPC TRAINING
+###### Developer : ALUXER#9951 (Discord)
+###### Script for FiveM Server  
 
 <img src="https://cdn.discordapp.com/attachments/899427825080221706/919195119645769738/unknown.png">

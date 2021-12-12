@@ -14,7 +14,7 @@ Aluxer['about'] = {
             dist = 50.0, -- ระยะของการเกิด | distand
         },
 		
-		[2] = {
+	[2] = {
             coords = vector3(3110.93, -4762.67, 15.25),
             model = "mp_m_freemode_01",
             max = 5,

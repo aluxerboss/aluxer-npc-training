@@ -7,5 +7,7 @@
 #### Features
 > - Stand alone (none-framework)
 > - practice using weapons
+> - free to setting
+> - Optimize CPU 0.01 ms when you near coord
 
 <img src="https://cdn.discordapp.com/attachments/899427825080221706/919195119645769738/unknown.png">

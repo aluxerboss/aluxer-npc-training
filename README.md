@@ -2,7 +2,7 @@
 
 ##### Resource Name : ALUXER NPC TRAINING
 ##### Developer : ALUXER#9951 (Discord)
-#####Script for FiveM Server  
+##### Script for FiveM Server  
   
 #### Features
 > - Stand alone (none-framework)
